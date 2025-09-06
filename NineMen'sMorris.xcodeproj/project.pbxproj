@@ -1,0 +1,546 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		8257C3232E6CCF11000A3B7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8257C30C2E6CCF0F000A3B7B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8257C3132E6CCF0F000A3B7B;
+			remoteInfo = "NineMen'sMorris";
+		};
+		8257C32D2E6CCF11000A3B7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8257C30C2E6CCF0F000A3B7B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8257C3132E6CCF0F000A3B7B;
+			remoteInfo = "NineMen'sMorris";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8257C3142E6CCF0F000A3B7B /* NineMen'sMorris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NineMen'sMorris.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8257C3222E6CCF11000A3B7B /* NineMen'sMorrisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NineMen'sMorrisTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8257C32C2E6CCF11000A3B7B /* NineMen'sMorrisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NineMen'sMorrisUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		8257C3162E6CCF0F000A3B7B /* NineMen'sMorris */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "NineMen'sMorris";
+			sourceTree = "<group>";
+		};
+		8257C3252E6CCF11000A3B7B /* NineMen'sMorrisTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "NineMen'sMorrisTests";
+			sourceTree = "<group>";
+		};
+		8257C32F2E6CCF11000A3B7B /* NineMen'sMorrisUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "NineMen'sMorrisUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8257C3112E6CCF0F000A3B7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8257C31F2E6CCF11000A3B7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8257C3292E6CCF11000A3B7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8257C30B2E6CCF0F000A3B7B = {
+			isa = PBXGroup;
+			children = (
+				8257C3162E6CCF0F000A3B7B /* NineMen'sMorris */,
+				8257C3252E6CCF11000A3B7B /* NineMen'sMorrisTests */,
+				8257C32F2E6CCF11000A3B7B /* NineMen'sMorrisUITests */,
+				8257C3152E6CCF0F000A3B7B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8257C3152E6CCF0F000A3B7B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8257C3142E6CCF0F000A3B7B /* NineMen'sMorris.app */,
+				8257C3222E6CCF11000A3B7B /* NineMen'sMorrisTests.xctest */,
+				8257C32C2E6CCF11000A3B7B /* NineMen'sMorrisUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8257C3132E6CCF0F000A3B7B /* NineMen'sMorris */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8257C3362E6CCF11000A3B7B /* Build configuration list for PBXNativeTarget "NineMen'sMorris" */;
+			buildPhases = (
+				8257C3102E6CCF0F000A3B7B /* Sources */,
+				8257C3112E6CCF0F000A3B7B /* Frameworks */,
+				8257C3122E6CCF0F000A3B7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8257C3162E6CCF0F000A3B7B /* NineMen'sMorris */,
+			);
+			name = "NineMen'sMorris";
+			packageProductDependencies = (
+			);
+			productName = "NineMen'sMorris";
+			productReference = 8257C3142E6CCF0F000A3B7B /* NineMen'sMorris.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8257C3212E6CCF11000A3B7B /* NineMen'sMorrisTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8257C3392E6CCF11000A3B7B /* Build configuration list for PBXNativeTarget "NineMen'sMorrisTests" */;
+			buildPhases = (
+				8257C31E2E6CCF11000A3B7B /* Sources */,
+				8257C31F2E6CCF11000A3B7B /* Frameworks */,
+				8257C3202E6CCF11000A3B7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8257C3242E6CCF11000A3B7B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8257C3252E6CCF11000A3B7B /* NineMen'sMorrisTests */,
+			);
+			name = "NineMen'sMorrisTests";
+			packageProductDependencies = (
+			);
+			productName = "NineMen'sMorrisTests";
+			productReference = 8257C3222E6CCF11000A3B7B /* NineMen'sMorrisTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8257C32B2E6CCF11000A3B7B /* NineMen'sMorrisUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8257C33C2E6CCF11000A3B7B /* Build configuration list for PBXNativeTarget "NineMen'sMorrisUITests" */;
+			buildPhases = (
+				8257C3282E6CCF11000A3B7B /* Sources */,
+				8257C3292E6CCF11000A3B7B /* Frameworks */,
+				8257C32A2E6CCF11000A3B7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8257C32E2E6CCF11000A3B7B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8257C32F2E6CCF11000A3B7B /* NineMen'sMorrisUITests */,
+			);
+			name = "NineMen'sMorrisUITests";
+			packageProductDependencies = (
+			);
+			productName = "NineMen'sMorrisUITests";
+			productReference = 8257C32C2E6CCF11000A3B7B /* NineMen'sMorrisUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8257C30C2E6CCF0F000A3B7B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					8257C3132E6CCF0F000A3B7B = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					8257C3212E6CCF11000A3B7B = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 8257C3132E6CCF0F000A3B7B;
+					};
+					8257C32B2E6CCF11000A3B7B = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 8257C3132E6CCF0F000A3B7B;
+					};
+				};
+			};
+			buildConfigurationList = 8257C30F2E6CCF0F000A3B7B /* Build configuration list for PBXProject "NineMen'sMorris" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8257C30B2E6CCF0F000A3B7B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 8257C3152E6CCF0F000A3B7B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8257C3132E6CCF0F000A3B7B /* NineMen'sMorris */,
+				8257C3212E6CCF11000A3B7B /* NineMen'sMorrisTests */,
+				8257C32B2E6CCF11000A3B7B /* NineMen'sMorrisUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8257C3122E6CCF0F000A3B7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8257C3202E6CCF11000A3B7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8257C32A2E6CCF11000A3B7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8257C3102E6CCF0F000A3B7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8257C31E2E6CCF11000A3B7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8257C3282E6CCF11000A3B7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8257C3242E6CCF11000A3B7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8257C3132E6CCF0F000A3B7B /* NineMen'sMorris */;
+			targetProxy = 8257C3232E6CCF11000A3B7B /* PBXContainerItemProxy */;
+		};
+		8257C32E2E6CCF11000A3B7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8257C3132E6CCF0F000A3B7B /* NineMen'sMorris */;
+			targetProxy = 8257C32D2E6CCF11000A3B7B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8257C3342E6CCF11000A3B7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8257C3352E6CCF11000A3B7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		8257C3372E6CCF11000A3B7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "NineMen'sMorris/NineMen_sMorris.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "space.irnin.NineMen-sMorris";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8257C3382E6CCF11000A3B7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "NineMen'sMorris/NineMen_sMorris.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "space.irnin.NineMen-sMorris";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8257C33A2E6CCF11000A3B7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "space.irnin.NineMen-sMorrisTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NineMen'sMorris.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NineMen'sMorris";
+			};
+			name = Debug;
+		};
+		8257C33B2E6CCF11000A3B7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "space.irnin.NineMen-sMorrisTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NineMen'sMorris.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NineMen'sMorris";
+			};
+			name = Release;
+		};
+		8257C33D2E6CCF11000A3B7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "space.irnin.NineMen-sMorrisUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "NineMen'sMorris";
+			};
+			name = Debug;
+		};
+		8257C33E2E6CCF11000A3B7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "space.irnin.NineMen-sMorrisUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "NineMen'sMorris";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8257C30F2E6CCF0F000A3B7B /* Build configuration list for PBXProject "NineMen'sMorris" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8257C3342E6CCF11000A3B7B /* Debug */,
+				8257C3352E6CCF11000A3B7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8257C3362E6CCF11000A3B7B /* Build configuration list for PBXNativeTarget "NineMen'sMorris" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8257C3372E6CCF11000A3B7B /* Debug */,
+				8257C3382E6CCF11000A3B7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8257C3392E6CCF11000A3B7B /* Build configuration list for PBXNativeTarget "NineMen'sMorrisTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8257C33A2E6CCF11000A3B7B /* Debug */,
+				8257C33B2E6CCF11000A3B7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8257C33C2E6CCF11000A3B7B /* Build configuration list for PBXNativeTarget "NineMen'sMorrisUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8257C33D2E6CCF11000A3B7B /* Debug */,
+				8257C33E2E6CCF11000A3B7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8257C30C2E6CCF0F000A3B7B /* Project object */;
+}
