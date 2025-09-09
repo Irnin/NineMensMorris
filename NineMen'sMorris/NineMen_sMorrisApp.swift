@@ -11,7 +11,7 @@ import SwiftUI
 struct NineMen_sMorrisApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GameView()
         }
     }
 }

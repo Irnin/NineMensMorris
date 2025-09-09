@@ -35,16 +35,6 @@
 			path = "NineMen'sMorris";
 			sourceTree = "<group>";
 		};
-		8257C3252E6CCF11000A3B7B /* NineMen'sMorrisTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "NineMen'sMorrisTests";
-			sourceTree = "<group>";
-		};
-		8257C32F2E6CCF11000A3B7B /* NineMen'sMorrisUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "NineMen'sMorrisUITests";
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				8257C3162E6CCF0F000A3B7B /* NineMen'sMorris */,
-				8257C3252E6CCF11000A3B7B /* NineMen'sMorrisTests */,
-				8257C32F2E6CCF11000A3B7B /* NineMen'sMorrisUITests */,
 				8257C3152E6CCF0F000A3B7B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				8257C3242E6CCF11000A3B7B /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				8257C3252E6CCF11000A3B7B /* NineMen'sMorrisTests */,
-			);
 			name = "NineMen'sMorrisTests";
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				8257C32E2E6CCF11000A3B7B /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				8257C32F2E6CCF11000A3B7B /* NineMen'sMorrisUITests */,
 			);
 			name = "NineMen'sMorrisUITests";
 			packageProductDependencies = (
