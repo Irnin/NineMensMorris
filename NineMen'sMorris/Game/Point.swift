@@ -9,7 +9,15 @@ import SwiftUI
 
 struct Point: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            print("Round Action")
+            }) {
+            Text("")
+                .frame(width: 100, height: 100)
+                .foregroundColor(Color.black)
+                .background(Color.red)
+                .clipShape(Circle())
+        }
     }
 }
 
