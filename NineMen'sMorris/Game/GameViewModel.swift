@@ -14,5 +14,9 @@ extension GameView {
         func getPoints() -> [Vertice] {
             return game.board.points
         }
+        
+        func getEdges() -> [Edge] {
+            return game.board.edges
+        }
     }
 }
