@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct Point: View {
+    @State var point: Vertice
+    var action: () -> Void
+    
     var body: some View {
-        Button(action: {
-            print("Round Action")
-            }) {
-            Text("")
-                .frame(width: 100, height: 100)
-                .foregroundColor(Color.black)
-                .background(Color.red)
-                .clipShape(Circle())
-        }
+        
+        Circle()
+            .fill(point.getColor())
+            .frame(width: 20)
+            .position(point.position)
+            .onTapGesture {
+                action()
+            }
     }
-}
-
-#Preview {
-    Point()
 }

@@ -1,13 +1,36 @@
 import CoreGraphics
+import SwiftUI
 
-struct Vertice: Identifiable {
+@Observable
+class Vertice: Identifiable {
     let id: Int8
     let position: CGPoint
     
     var takenBy: Player? = nil
+    
+    init(id: Int8, position: CGPoint, takenBy: Player? = nil) {
+        self.id = id
+        self.position = position
+        self.takenBy = takenBy
+    }
+    
+    func getColor() -> Color {
+        switch takenBy {
+        case .player1:
+            return .blue
+        case .player2:
+            return .red
+        default:
+            return .black
+        }
+    }
+    
+    func placeMen(_ player: Player) {
+        takenBy = player
+    }
 }
 
-struct Edge: Identifiable {
+class Edge: Identifiable {
     let id: Int8
     let verticle1: Vertice
     let verticle2: Vertice
@@ -21,7 +44,7 @@ struct Edge: Identifiable {
     }
 }
 
-struct BoardGraph {
+class BoardGraph {
     private(set) var points: [Vertice] = []
     private(set) var edges: [Edge] = []
 
@@ -34,7 +57,7 @@ struct BoardGraph {
         createEdge()
     }
     
-    private mutating func createVertice() {
+    private func createVertice() {
         points = [
             Vertice(id:  1, position: CGPoint(x: 100, y: 100)),
             Vertice(id:  2, position: CGPoint(x: 400, y: 100)),
@@ -63,14 +86,14 @@ struct BoardGraph {
         ]
     }
     
-    private mutating func createEdge() {
+    private func createEdge() {
         edges = [
-            Edge( 1, getPoint(id: 1)!, getPoint(id: 2)!, .horizontal),
-            Edge( 2, getPoint(id: 2)!, getPoint(id: 3)!, .horizontal),
-            Edge( 3, getPoint(id: 4)!, getPoint(id: 5)!, .horizontal),
-            Edge( 4, getPoint(id: 5)!, getPoint(id: 6)!, .horizontal),
-            Edge( 5, getPoint(id: 7)!, getPoint(id: 8)!, .horizontal),
-            Edge( 6, getPoint(id: 8)!, getPoint(id: 9)!, .horizontal),
+            Edge( 1, getPoint(id:  1)!, getPoint(id:  2)!, .horizontal),
+            Edge( 2, getPoint(id:  2)!, getPoint(id:  3)!, .horizontal),
+            Edge( 3, getPoint(id:  4)!, getPoint(id:  5)!, .horizontal),
+            Edge( 4, getPoint(id:  5)!, getPoint(id:  6)!, .horizontal),
+            Edge( 5, getPoint(id:  7)!, getPoint(id:  8)!, .horizontal),
+            Edge( 6, getPoint(id:  8)!, getPoint(id:  9)!, .horizontal),
             Edge( 7, getPoint(id: 10)!, getPoint(id: 11)!, .horizontal),
             Edge( 8, getPoint(id: 11)!, getPoint(id: 12)!, .horizontal),
             Edge( 9, getPoint(id: 13)!, getPoint(id: 14)!, .horizontal),
@@ -82,21 +105,21 @@ struct BoardGraph {
             Edge(15, getPoint(id: 22)!, getPoint(id: 23)!, .horizontal),
             Edge(16, getPoint(id: 23)!, getPoint(id: 24)!, .horizontal),
 
-            Edge(17, getPoint(id: 1)!, getPoint(id: 10)!, .vertical),
+            Edge(17, getPoint(id:  1)!, getPoint(id: 10)!, .vertical),
             Edge(18, getPoint(id: 10)!, getPoint(id: 22)!, .vertical),
-            Edge(19, getPoint(id: 4)!, getPoint(id: 11)!, .vertical),
+            Edge(19, getPoint(id:  4)!, getPoint(id: 11)!, .vertical),
             Edge(20, getPoint(id: 11)!, getPoint(id: 19)!, .vertical),
-            Edge(21, getPoint(id: 7)!, getPoint(id: 12)!, .vertical),
+            Edge(21, getPoint(id:  7)!, getPoint(id: 12)!, .vertical),
             Edge(22, getPoint(id: 12)!, getPoint(id: 16)!, .vertical),
-            Edge(23, getPoint(id: 2)!, getPoint(id: 5)!, .vertical),
-            Edge(24, getPoint(id: 5)!, getPoint(id: 8)!, .vertical),
+            Edge(23, getPoint(id:  2)!, getPoint(id:  5)!, .vertical),
+            Edge(24, getPoint(id:  5)!, getPoint(id:  8)!, .vertical),
             Edge(25, getPoint(id: 17)!, getPoint(id: 20)!, .vertical),
             Edge(26, getPoint(id: 20)!, getPoint(id: 23)!, .vertical),
-            Edge(27, getPoint(id: 9)!, getPoint(id: 13)!, .vertical),
+            Edge(27, getPoint(id:  9)!, getPoint(id: 13)!, .vertical),
             Edge(28, getPoint(id: 13)!, getPoint(id: 18)!, .vertical),
-            Edge(29, getPoint(id: 6)!, getPoint(id: 14)!, .vertical),
+            Edge(29, getPoint(id:  6)!, getPoint(id: 14)!, .vertical),
             Edge(30, getPoint(id: 14)!, getPoint(id: 21)!, .vertical),
-            Edge(31, getPoint(id: 3)!, getPoint(id: 15)!, .vertical),
+            Edge(31, getPoint(id:  3)!, getPoint(id: 15)!, .vertical),
             Edge(32, getPoint(id: 15)!, getPoint(id: 24)!, .vertical)
         ]
     }
