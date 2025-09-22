@@ -39,6 +39,15 @@ extension GameView {
             }
             
             game.placeMen(at: pointId, player: currentPlayer)
+            
+            if(game.isMill(at: pointId, orintation: .horizontal)) {
+                logger.info("Found horizontal mill")
+            }
+            
+            if(game.isMill(at: pointId, orintation: .vertical)) {
+                logger.info("Found vertial mill")
+            }
+            
             game.nextPlayer()
             
             if(menLeft(player: .player1) == 0 && menLeft(player: .player2) == 0) {

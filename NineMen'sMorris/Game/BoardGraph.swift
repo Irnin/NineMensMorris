@@ -2,7 +2,7 @@ import CoreGraphics
 import SwiftUI
 
 @Observable
-class Vertice: Identifiable {
+class Vertice: Identifiable, Hashable {
     let id: Int8
     let position: CGPoint
     
@@ -12,6 +12,14 @@ class Vertice: Identifiable {
         self.id = id
         self.position = position
         self.takenBy = takenBy
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    public static func ==(lhs: Vertice, rhs: Vertice) -> Bool{
+        return lhs.id == rhs.id
     }
     
     func getColor() -> Color {
@@ -50,6 +58,29 @@ class BoardGraph {
 
     func getPoint(id: Int8) -> Vertice? {
         return points.first {$0.id == id}
+    }
+    
+    func getPointNeibers(for point: Vertice, orientation: Orientation) -> Set<Vertice>{
+        
+        var neibers: Set<Vertice> = []
+        
+        var edgesFromPoint = edges.filter({$0.verticle1 == point || $0.verticle2 == point})
+            .filter({$0.orientation == orientation})
+        
+        // Check deeper to find all neibers in a line
+        if edgesFromPoint.count == 1 {
+            let middlePoint: Vertice = edgesFromPoint[0].verticle1 == point ? edgesFromPoint[0].verticle2 : edgesFromPoint[0].verticle1
+            
+            edgesFromPoint = edges.filter({$0.verticle1 == middlePoint || $0.verticle2 == middlePoint})
+                .filter({$0.orientation == orientation})
+        }
+        
+        neibers.insert(edgesFromPoint[0].verticle1)
+        neibers.insert(edgesFromPoint[0].verticle2)
+        neibers.insert(edgesFromPoint[1].verticle1)
+        neibers.insert(edgesFromPoint[1].verticle2)
+        
+        return neibers
     }
     
     init() {

@@ -25,6 +25,24 @@ struct GameModel {
         menLeft[currentPlayer]! -= 1
     }
     
+    func isMill(at pointId: Int8, orintation: Orientation) -> Bool {
+        guard let point = self.getPoint(at: pointId) else {
+            return false
+        }
+        
+        let neibers = board.getPointNeibers(for: point, orientation: orintation)
+        
+        var counter: Int8 = 0
+        
+        for neiber in neibers {
+            if neiber.takenBy == point.takenBy {
+                counter += 1
+            }
+        }
+        
+        return counter == 3 ? true : false
+    }
+    
     mutating func nextPlayer() {
         self.currentPlayer = (self.currentPlayer == .player1) ? .player2 : .player1
     }
