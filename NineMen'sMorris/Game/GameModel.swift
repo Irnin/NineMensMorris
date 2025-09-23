@@ -3,6 +3,7 @@ import Foundation
 
 struct GameModel {
     private(set) var gamePhase: GamePhase = .placing
+    private(set) var attackActive: Bool = false
     private(set) var board: BoardGraph = BoardGraph()
     private(set) var currentPlayer: Player = .player1
     
@@ -25,6 +26,13 @@ struct GameModel {
         menLeft[currentPlayer]! -= 1
     }
     
+    func isMill(at pointId: Int8) -> Bool {
+        let horizontalCheck = isMill(at: pointId, orintation: .horizontal)
+        let verticalCheck = isMill(at: pointId, orintation: .vertical)
+        
+        return horizontalCheck || verticalCheck
+    }
+    
     func isMill(at pointId: Int8, orintation: Orientation) -> Bool {
         guard let point = self.getPoint(at: pointId) else {
             return false
@@ -41,6 +49,19 @@ struct GameModel {
         }
         
         return counter == 3 ? true : false
+    }
+    
+    mutating func allowAttack() {
+        attackActive = true
+    }
+    
+    mutating func attack(at pointId: Int8) {
+        guard let point = self.getPoint(at: pointId) else {
+            return
+        }
+        
+        point.takenBy = nil
+        attackActive = false
     }
     
     mutating func nextPlayer() {
