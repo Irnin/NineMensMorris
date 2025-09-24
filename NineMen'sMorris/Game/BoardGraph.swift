@@ -83,6 +83,21 @@ class BoardGraph {
         return neibers
     }
     
+    func getPointNeibers(for point: Vertice) -> Set<Vertice>{
+        let verticalNeibers = getPointNeibers(for: point, orientation: .vertical)
+        let horizontalNeibers = getPointNeibers(for: point, orientation: .horizontal)
+        
+        let neibers = verticalNeibers.union(horizontalNeibers)
+        
+        return neibers
+    }
+    
+    func getPointCloseNeighbors(for point: Vertice) -> Set<Vertice> {
+        return Set(edges.filter { $0.verticle1 == point || $0.verticle2 == point }
+                       .flatMap { [$0.verticle1, $0.verticle2] })
+            .subtracting([point])
+    }
+    
     init() {
         createVertice()
         createEdge()
