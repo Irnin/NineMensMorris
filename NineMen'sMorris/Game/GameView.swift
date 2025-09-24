@@ -12,6 +12,8 @@ struct GameView: View {
                 Text("Player I men: \(viewModel.menLeft(player: .player1))")
                 Text("Player II men: \(viewModel.menLeft(player: .player2))")
                 
+                Text("Can attack?: \(viewModel.canAttack() ? "Yes" : "No")")
+                
                 Spacer()
             }
             
