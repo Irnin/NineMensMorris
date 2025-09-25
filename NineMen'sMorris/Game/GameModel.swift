@@ -6,9 +6,10 @@ struct GameModel {
     private(set) var attackActive: Bool = false
     private(set) var board: BoardGraph = BoardGraph()
     private(set) var currentPlayer: Player = .player1
-    private(set) var selectedPoint: Vertice? = nil
+    private(set) var selectedPoint: Vertex? = nil
     
     private(set) var menLeft : [Player: Int8] = [.player1: 9, .player2: 9]
+    private(set) var menOnBoard : [Player: Int8] = [.player1: 0, .player2: 0]
     
     private let logger = Logger(subsystem: "space.irnin.NineMen'sMorris", category: "game")
     
@@ -16,7 +17,7 @@ struct GameModel {
         self.gamePhase = .placing
     }
     
-    func getPoint(at pointId: Int8) -> Vertice? {
+    func getPoint(at pointId: Int8) -> Vertex? {
         return board.points.first(where: {$0.id == pointId})
     }
     
@@ -27,6 +28,18 @@ struct GameModel {
         
         point.placeMen(player)
         menLeft[currentPlayer]! -= 1
+        menOnBoard[currentPlayer]! += 1
+    }
+    
+    func isThereWinner() -> Player? {
+        if menOnBoard[.player1] == 2 {
+            return .player2
+        }
+        else if menOnBoard[.player2] == 2 {
+            return .player1
+        }
+        
+        return nil
     }
     
     func isMill(at pointId: Int8) -> Bool {
@@ -62,6 +75,9 @@ struct GameModel {
         guard let point = self.getPoint(at: pointId) else {
             return
         }
+        
+        let attackedPlayer = point.takenBy!
+        menOnBoard[attackedPlayer]! -= 1
         
         point.takenBy = nil
         attackActive = false

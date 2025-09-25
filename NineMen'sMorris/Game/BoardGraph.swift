@@ -2,7 +2,7 @@ import CoreGraphics
 import SwiftUI
 
 @Observable
-class Vertice: Identifiable, Hashable {
+class Vertex: Identifiable, Hashable {
     let id: Int8
     let position: CGPoint
     
@@ -18,7 +18,7 @@ class Vertice: Identifiable, Hashable {
         hasher.combine(id)
     }
     
-    public static func ==(lhs: Vertice, rhs: Vertice) -> Bool{
+    public static func ==(lhs: Vertex, rhs: Vertex) -> Bool{
         return lhs.id == rhs.id
     }
     
@@ -40,50 +40,50 @@ class Vertice: Identifiable, Hashable {
 
 class Edge: Identifiable {
     let id: Int8
-    let verticle1: Vertice
-    let verticle2: Vertice
+    let vertex1: Vertex
+    let vertex2: Vertex
     let orientation: Orientation
     
-    init(_ id: Int8, _ verticle1: Vertice, _ verticle2: Vertice, _ orientation: Orientation) {
+    init(_ id: Int8, _ verticle1: Vertex, _ verticle2: Vertex, _ orientation: Orientation) {
         self.id = id
-        self.verticle1 = verticle1
-        self.verticle2 = verticle2
+        self.vertex1 = verticle1
+        self.vertex2 = verticle2
         self.orientation = orientation
     }
 }
 
 class BoardGraph {
-    private(set) var points: [Vertice] = []
+    private(set) var points: [Vertex] = []
     private(set) var edges: [Edge] = []
 
-    func getPoint(id: Int8) -> Vertice? {
+    func getPoint(id: Int8) -> Vertex? {
         return points.first {$0.id == id}
     }
     
-    func getPointNeibers(for point: Vertice, orientation: Orientation) -> Set<Vertice>{
+    func getPointNeibers(for point: Vertex, orientation: Orientation) -> Set<Vertex>{
         
-        var neibers: Set<Vertice> = []
+        var neibers: Set<Vertex> = []
         
-        var edgesFromPoint = edges.filter({$0.verticle1 == point || $0.verticle2 == point})
+        var edgesFromPoint = edges.filter({$0.vertex1 == point || $0.vertex2 == point})
             .filter({$0.orientation == orientation})
         
         // Check deeper to find all neibers in a line
         if edgesFromPoint.count == 1 {
-            let middlePoint: Vertice = edgesFromPoint[0].verticle1 == point ? edgesFromPoint[0].verticle2 : edgesFromPoint[0].verticle1
+            let middlePoint: Vertex = edgesFromPoint[0].vertex1 == point ? edgesFromPoint[0].vertex2 : edgesFromPoint[0].vertex1
             
-            edgesFromPoint = edges.filter({$0.verticle1 == middlePoint || $0.verticle2 == middlePoint})
+            edgesFromPoint = edges.filter({$0.vertex1 == middlePoint || $0.vertex2 == middlePoint})
                 .filter({$0.orientation == orientation})
         }
         
-        neibers.insert(edgesFromPoint[0].verticle1)
-        neibers.insert(edgesFromPoint[0].verticle2)
-        neibers.insert(edgesFromPoint[1].verticle1)
-        neibers.insert(edgesFromPoint[1].verticle2)
+        neibers.insert(edgesFromPoint[0].vertex1)
+        neibers.insert(edgesFromPoint[0].vertex2)
+        neibers.insert(edgesFromPoint[1].vertex1)
+        neibers.insert(edgesFromPoint[1].vertex2)
         
         return neibers
     }
     
-    func getPointNeibers(for point: Vertice) -> Set<Vertice>{
+    func getPointNeibers(for point: Vertex) -> Set<Vertex>{
         let verticalNeibers = getPointNeibers(for: point, orientation: .vertical)
         let horizontalNeibers = getPointNeibers(for: point, orientation: .horizontal)
         
@@ -92,9 +92,9 @@ class BoardGraph {
         return neibers
     }
     
-    func getPointCloseNeighbors(for point: Vertice) -> Set<Vertice> {
-        return Set(edges.filter { $0.verticle1 == point || $0.verticle2 == point }
-                       .flatMap { [$0.verticle1, $0.verticle2] })
+    func getPointCloseNeighbors(for point: Vertex) -> Set<Vertex> {
+        return Set(edges.filter { $0.vertex1 == point || $0.vertex2 == point }
+                       .flatMap { [$0.vertex1, $0.vertex2] })
             .subtracting([point])
     }
     
@@ -105,30 +105,30 @@ class BoardGraph {
     
     private func createVertice() {
         points = [
-            Vertice(id:  1, position: CGPoint(x: 100, y: 100)),
-            Vertice(id:  2, position: CGPoint(x: 400, y: 100)),
-            Vertice(id:  3, position: CGPoint(x: 700, y: 100)),
-            Vertice(id:  4, position: CGPoint(x: 200, y: 200)),
-            Vertice(id:  5, position: CGPoint(x: 400, y: 200)),
-            Vertice(id:  6, position: CGPoint(x: 600, y: 200)),
-            Vertice(id:  7, position: CGPoint(x: 300, y: 300)),
-            Vertice(id:  8, position: CGPoint(x: 400, y: 300)),
-            Vertice(id:  9, position: CGPoint(x: 500, y: 300)),
-            Vertice(id: 10, position: CGPoint(x: 100, y: 400)),
-            Vertice(id: 11, position: CGPoint(x: 200, y: 400)),
-            Vertice(id: 12, position: CGPoint(x: 300, y: 400)),
-            Vertice(id: 13, position: CGPoint(x: 500, y: 400)),
-            Vertice(id: 14, position: CGPoint(x: 600, y: 400)),
-            Vertice(id: 15, position: CGPoint(x: 700, y: 400)),
-            Vertice(id: 16, position: CGPoint(x: 300, y: 500)),
-            Vertice(id: 17, position: CGPoint(x: 400, y: 500)),
-            Vertice(id: 18, position: CGPoint(x: 500, y: 500)),
-            Vertice(id: 19, position: CGPoint(x: 200, y: 600)),
-            Vertice(id: 20, position: CGPoint(x: 400, y: 600)),
-            Vertice(id: 21, position: CGPoint(x: 600, y: 600)),
-            Vertice(id: 22, position: CGPoint(x: 100, y: 700)),
-            Vertice(id: 23, position: CGPoint(x: 400, y: 700)),
-            Vertice(id: 24, position: CGPoint(x: 700, y: 700))
+            Vertex(id:  1, position: CGPoint(x: 100, y: 100)),
+            Vertex(id:  2, position: CGPoint(x: 400, y: 100)),
+            Vertex(id:  3, position: CGPoint(x: 700, y: 100)),
+            Vertex(id:  4, position: CGPoint(x: 200, y: 200)),
+            Vertex(id:  5, position: CGPoint(x: 400, y: 200)),
+            Vertex(id:  6, position: CGPoint(x: 600, y: 200)),
+            Vertex(id:  7, position: CGPoint(x: 300, y: 300)),
+            Vertex(id:  8, position: CGPoint(x: 400, y: 300)),
+            Vertex(id:  9, position: CGPoint(x: 500, y: 300)),
+            Vertex(id: 10, position: CGPoint(x: 100, y: 400)),
+            Vertex(id: 11, position: CGPoint(x: 200, y: 400)),
+            Vertex(id: 12, position: CGPoint(x: 300, y: 400)),
+            Vertex(id: 13, position: CGPoint(x: 500, y: 400)),
+            Vertex(id: 14, position: CGPoint(x: 600, y: 400)),
+            Vertex(id: 15, position: CGPoint(x: 700, y: 400)),
+            Vertex(id: 16, position: CGPoint(x: 300, y: 500)),
+            Vertex(id: 17, position: CGPoint(x: 400, y: 500)),
+            Vertex(id: 18, position: CGPoint(x: 500, y: 500)),
+            Vertex(id: 19, position: CGPoint(x: 200, y: 600)),
+            Vertex(id: 20, position: CGPoint(x: 400, y: 600)),
+            Vertex(id: 21, position: CGPoint(x: 600, y: 600)),
+            Vertex(id: 22, position: CGPoint(x: 100, y: 700)),
+            Vertex(id: 23, position: CGPoint(x: 400, y: 700)),
+            Vertex(id: 24, position: CGPoint(x: 700, y: 700))
         ]
     }
     

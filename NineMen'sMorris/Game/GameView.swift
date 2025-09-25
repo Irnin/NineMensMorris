@@ -34,8 +34,8 @@ struct GameView: View {
                         
                         // Place grid
                         ForEach(viewModel.getEdges(), id: \.id) { edge in
-                            let start = edge.verticle1.position
-                            let end = edge.verticle2.position
+                            let start = edge.vertex1.position
+                            let end = edge.vertex2.position
                             
                             Path { path in
                                 path.move(to: start)

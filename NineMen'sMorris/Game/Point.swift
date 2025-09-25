@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Point: View {
-    @State var point: Vertice
+    @State var point: Vertex
     var action: () -> Void
     
     var body: some View {
