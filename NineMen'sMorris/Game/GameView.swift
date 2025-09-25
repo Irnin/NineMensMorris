@@ -9,6 +9,8 @@ struct GameView: View {
             VStack {
                 Text("Nine men's morris")
                 Text("Game phase \(viewModel.gamePhase())")
+                
+                Text("Current player: \(viewModel.currentPlayer())")
                 Text("Player I men: \(viewModel.menLeft(player: .player1))")
                 Text("Player II men: \(viewModel.menLeft(player: .player2))")
                 

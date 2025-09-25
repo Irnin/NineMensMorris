@@ -23,7 +23,7 @@ extension GameView {
             case .placing:
                 placeMan(at: pointId)
             case .moving:
-                logger.warning("MOVING NOT IMPLEMENTED")
+                moveMan(at: pointId)
             }
         }
         
@@ -43,15 +43,41 @@ extension GameView {
             // Placing a man on the board
             game.placeMen(at: pointId, player: currentPlayer)
             
-            // Checking mill
-            if(game.isMill(at: pointId)) {
-                logger.info("Player \(currentPlayerName) formed a mill")
-                game.allowAttack()
+            if formedMill(at: pointId) {
                 return
             }
             
             game.nextPlayer()
             startMovingPhaseIfPossible()
+        }
+        
+        func formedMill(at pointId: Int8) -> Bool {
+            if(game.isMill(at: pointId)) {
+                let currentPlayer = game.currentPlayer
+                let currentPlayerName = currentPlayer.description
+                
+                logger.info("Player \(currentPlayerName) formed a mill")
+                game.allowAttack()
+                return true
+            }
+            
+            return false
+        }
+        
+        func moveMan(at pointId: Int8) {
+            if(game.selectedPoint == nil) {
+                game.selectPoint(at: pointId)
+                return
+            }
+            
+            if game.move(at: pointId) {
+                
+                if formedMill(at: pointId) {
+                    return
+                }
+                
+                game.nextPlayer()
+            }
         }
         
         func startMovingPhaseIfPossible() {
@@ -113,6 +139,15 @@ extension GameView {
         
         func canAttack() -> Bool {
             return game.attackActive
+        }
+        
+        func currentPlayer() -> String {
+            switch game.currentPlayer {
+                case .player1:
+                return "Player 1"
+            case .player2:
+                return "Player 2"
+            }
         }
     }
 }
