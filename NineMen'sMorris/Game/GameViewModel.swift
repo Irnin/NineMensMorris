@@ -14,8 +14,9 @@ extension GameView {
             if(game.attackActive) {
                 attackMan(at: pointId)
                 
-                // Checking was it a final place action
                 startMovingPhaseIfPossible()
+                checkIsGameOver()
+    
                 return
             }
             
@@ -91,6 +92,19 @@ extension GameView {
             }
         }
         
+        func checkIsGameOver() {
+            if game.gamePhase == .placing {
+                return
+            }
+            
+            guard let winner = game.isThereWinner() else {
+                return
+            }
+            
+            let winnerName = winner.description
+            logger.info("\(winnerName) won the game!")
+        }
+        
         func attackMan(at pointId: Int8) {
             let currentPlayer = game.currentPlayer
             let currentPlayerName = currentPlayer.description
@@ -125,7 +139,7 @@ extension GameView {
                 }
         }
         
-        func getPoints() -> [Vertice] {
+        func getPoints() -> [Vertex] {
             return game.board.points
         }
         
