@@ -44,11 +44,34 @@ class Edge: Identifiable {
     let vertex2: Vertex
     let orientation: Orientation
     
-    init(_ id: Int8, _ verticle1: Vertex, _ verticle2: Vertex, _ orientation: Orientation) {
+    
+    private static func calculateOrientation(_ vertex1: Vertex,_ vertex2: Vertex) -> Orientation{
+        let deltaX = vertex1.position.x - vertex2.position.x
+        let deltaY = vertex1.position.y - vertex2.position.y
+        let tolerance: CGFloat = 0.001
+    
+        if abs(deltaX) < tolerance {
+            return .horizontal
+        }
+        
+        if abs(deltaY) < tolerance {
+            return .vertical
+        }
+        
+        if (deltaX < 0 && deltaY < 0) || (deltaX > 0 && deltaY > 0) {
+            return .diagonalLeftToRight
+        }
+        else {
+            return .diagonalRightToLeft
+        }
+    }
+    
+    init(_ id: Int8, _ vertex1: Vertex, _ vertex2: Vertex, _ orientation: Orientation? = nil) {
         self.id = id
-        self.vertex1 = verticle1
-        self.vertex2 = verticle2
-        self.orientation = orientation
+        self.vertex1 = vertex1
+        self.vertex2 = vertex2
+        
+        self.orientation = orientation ?? Self.calculateOrientation(vertex1, vertex2)
     }
 }
 
@@ -134,39 +157,39 @@ class BoardGraph {
     
     private func createEdge() {
         edges = [
-            Edge( 1, getPoint(id:  1)!, getPoint(id:  2)!, .horizontal),
-            Edge( 2, getPoint(id:  2)!, getPoint(id:  3)!, .horizontal),
-            Edge( 3, getPoint(id:  4)!, getPoint(id:  5)!, .horizontal),
-            Edge( 4, getPoint(id:  5)!, getPoint(id:  6)!, .horizontal),
-            Edge( 5, getPoint(id:  7)!, getPoint(id:  8)!, .horizontal),
-            Edge( 6, getPoint(id:  8)!, getPoint(id:  9)!, .horizontal),
-            Edge( 7, getPoint(id: 10)!, getPoint(id: 11)!, .horizontal),
-            Edge( 8, getPoint(id: 11)!, getPoint(id: 12)!, .horizontal),
-            Edge( 9, getPoint(id: 13)!, getPoint(id: 14)!, .horizontal),
-            Edge(10, getPoint(id: 14)!, getPoint(id: 15)!, .horizontal),
-            Edge(11, getPoint(id: 16)!, getPoint(id: 17)!, .horizontal),
-            Edge(12, getPoint(id: 17)!, getPoint(id: 18)!, .horizontal),
-            Edge(13, getPoint(id: 19)!, getPoint(id: 20)!, .horizontal),
-            Edge(14, getPoint(id: 20)!, getPoint(id: 21)!, .horizontal),
-            Edge(15, getPoint(id: 22)!, getPoint(id: 23)!, .horizontal),
-            Edge(16, getPoint(id: 23)!, getPoint(id: 24)!, .horizontal),
+            Edge( 1, getPoint(id:  1)!, getPoint(id:  2)!),
+            Edge( 2, getPoint(id:  2)!, getPoint(id:  3)!),
+            Edge( 3, getPoint(id:  4)!, getPoint(id:  5)!),
+            Edge( 4, getPoint(id:  5)!, getPoint(id:  6)!),
+            Edge( 5, getPoint(id:  7)!, getPoint(id:  8)!),
+            Edge( 6, getPoint(id:  8)!, getPoint(id:  9)!),
+            Edge( 7, getPoint(id: 10)!, getPoint(id: 11)!),
+            Edge( 8, getPoint(id: 11)!, getPoint(id: 12)!),
+            Edge( 9, getPoint(id: 13)!, getPoint(id: 14)!),
+            Edge(10, getPoint(id: 14)!, getPoint(id: 15)!),
+            Edge(11, getPoint(id: 16)!, getPoint(id: 17)!),
+            Edge(12, getPoint(id: 17)!, getPoint(id: 18)!),
+            Edge(13, getPoint(id: 19)!, getPoint(id: 20)!),
+            Edge(14, getPoint(id: 20)!, getPoint(id: 21)!),
+            Edge(15, getPoint(id: 22)!, getPoint(id: 23)!),
+            Edge(16, getPoint(id: 23)!, getPoint(id: 24)!),
 
-            Edge(17, getPoint(id:  1)!, getPoint(id: 10)!, .vertical),
-            Edge(18, getPoint(id: 10)!, getPoint(id: 22)!, .vertical),
-            Edge(19, getPoint(id:  4)!, getPoint(id: 11)!, .vertical),
-            Edge(20, getPoint(id: 11)!, getPoint(id: 19)!, .vertical),
-            Edge(21, getPoint(id:  7)!, getPoint(id: 12)!, .vertical),
-            Edge(22, getPoint(id: 12)!, getPoint(id: 16)!, .vertical),
-            Edge(23, getPoint(id:  2)!, getPoint(id:  5)!, .vertical),
-            Edge(24, getPoint(id:  5)!, getPoint(id:  8)!, .vertical),
-            Edge(25, getPoint(id: 17)!, getPoint(id: 20)!, .vertical),
-            Edge(26, getPoint(id: 20)!, getPoint(id: 23)!, .vertical),
-            Edge(27, getPoint(id:  9)!, getPoint(id: 13)!, .vertical),
-            Edge(28, getPoint(id: 13)!, getPoint(id: 18)!, .vertical),
-            Edge(29, getPoint(id:  6)!, getPoint(id: 14)!, .vertical),
-            Edge(30, getPoint(id: 14)!, getPoint(id: 21)!, .vertical),
-            Edge(31, getPoint(id:  3)!, getPoint(id: 15)!, .vertical),
-            Edge(32, getPoint(id: 15)!, getPoint(id: 24)!, .vertical)
+            Edge(17, getPoint(id:  1)!, getPoint(id: 10)!),
+            Edge(18, getPoint(id: 10)!, getPoint(id: 22)!),
+            Edge(19, getPoint(id:  4)!, getPoint(id: 11)!),
+            Edge(20, getPoint(id: 11)!, getPoint(id: 19)!),
+            Edge(21, getPoint(id:  7)!, getPoint(id: 12)!),
+            Edge(22, getPoint(id: 12)!, getPoint(id: 16)!),
+            Edge(23, getPoint(id:  2)!, getPoint(id:  5)!),
+            Edge(24, getPoint(id:  5)!, getPoint(id:  8)!),
+            Edge(25, getPoint(id: 17)!, getPoint(id: 20)!),
+            Edge(26, getPoint(id: 20)!, getPoint(id: 23)!),
+            Edge(27, getPoint(id:  9)!, getPoint(id: 13)!),
+            Edge(28, getPoint(id: 13)!, getPoint(id: 18)!),
+            Edge(29, getPoint(id:  6)!, getPoint(id: 14)!),
+            Edge(30, getPoint(id: 14)!, getPoint(id: 21)!),
+            Edge(31, getPoint(id:  3)!, getPoint(id: 15)!),
+            Edge(32, getPoint(id: 15)!, getPoint(id: 24)!)
         ]
     }
 }
