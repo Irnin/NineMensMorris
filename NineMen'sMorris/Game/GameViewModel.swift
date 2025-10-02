@@ -143,6 +143,22 @@ extension GameView {
             return game.board.points
         }
         
+        func getPointLocation(point: Vertex, borderSize: CGSize) -> CGPoint {
+            
+            
+            let pointX = CGFloat(point.positionX)
+            let pointY = CGFloat(point.positionY)
+            
+            let vertexBorder = CGFloat(game.board.vertexBorder)
+            
+            let borderSize = borderSize.width
+            
+            let relativeX = pointX / vertexBorder * borderSize
+            let relativeY = pointY / vertexBorder * borderSize
+            
+            return CGPoint(x: relativeX, y: relativeY)
+        }
+        
         func getEdges() -> [Edge] {
             return game.board.edges
         }

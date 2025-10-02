@@ -8,6 +8,8 @@ struct GameView: View {
         HStack{
             VStack {
                 Text("Nine men's morris")
+                    .font(.custom("Viking", size: 12.0))
+                
                 Text("Game phase \(viewModel.gamePhase())")
                 
                 Text("Current player: \(viewModel.currentPlayer())")
@@ -31,11 +33,12 @@ struct GameView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                     
                     GeometryReader { geometry in
+                        let borderSize = geometry.size
                         
                         // Place grid
                         ForEach(viewModel.getEdges(), id: \.id) { edge in
-                            let start = edge.vertex1.position
-                            let end = edge.vertex2.position
+                            let start = viewModel.getPointLocation(point: edge.vertex1, borderSize: borderSize)
+                            let end = viewModel.getPointLocation(point: edge.vertex2, borderSize: borderSize)
                             
                             Path { path in
                                 path.move(to: start)
@@ -46,7 +49,9 @@ struct GameView: View {
                         
                         // Place points on board
                         ForEach(viewModel.getPoints(), id: \.id) { point in
-                            Point(point: point, action: {viewModel.playerAction(at: point.id)})
+                            let location = viewModel.getPointLocation(point: point, borderSize: borderSize)
+                            
+                            Point(point: point, location: location, action: {viewModel.playerAction(at: point.id)})
                         }
                     }
                     .frame(width: 800, height: 800)

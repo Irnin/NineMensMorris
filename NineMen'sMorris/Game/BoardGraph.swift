@@ -4,13 +4,15 @@ import SwiftUI
 @Observable
 class Vertex: Identifiable, Hashable {
     let id: Int8
-    let position: CGPoint
+    let positionX: Int8
+    let positionY: Int8
     
     var takenBy: Player? = nil
     
-    init(id: Int8, position: CGPoint, takenBy: Player? = nil) {
+    init(id: Int8, positionX: Int8, positionY: Int8, takenBy: Player? = nil) {
         self.id = id
-        self.position = position
+        self.positionX = positionX
+        self.positionY = positionY
         self.takenBy = takenBy
     }
     
@@ -44,17 +46,16 @@ class Edge: Identifiable {
     let vertex2: Vertex
     let orientation: Orientation
     
-    
+    /// Method is used to determine the orientation of the edge.
     private static func calculateOrientation(_ vertex1: Vertex,_ vertex2: Vertex) -> Orientation{
-        let deltaX = vertex1.position.x - vertex2.position.x
-        let deltaY = vertex1.position.y - vertex2.position.y
-        let tolerance: CGFloat = 0.001
+        let deltaX = Float(vertex1.positionX - vertex2.positionX)
+        let deltaY = Float(vertex1.positionY - vertex2.positionY)
     
-        if abs(deltaX) < tolerance {
+        if deltaX == 0 {
             return .horizontal
         }
         
-        if abs(deltaY) < tolerance {
+        if deltaY == 0 {
             return .vertical
         }
         
@@ -78,6 +79,8 @@ class Edge: Identifiable {
 class BoardGraph {
     private(set) var points: [Vertex] = []
     private(set) var edges: [Edge] = []
+    
+    private(set) var vertexBorder: Int8
 
     func getPoint(id: Int8) -> Vertex? {
         return points.first {$0.id == id}
@@ -122,36 +125,38 @@ class BoardGraph {
     }
     
     init() {
+        self.vertexBorder = 8
+        
         createVertice()
         createEdge()
     }
     
     private func createVertice() {
         points = [
-            Vertex(id:  1, position: CGPoint(x: 100, y: 100)),
-            Vertex(id:  2, position: CGPoint(x: 400, y: 100)),
-            Vertex(id:  3, position: CGPoint(x: 700, y: 100)),
-            Vertex(id:  4, position: CGPoint(x: 200, y: 200)),
-            Vertex(id:  5, position: CGPoint(x: 400, y: 200)),
-            Vertex(id:  6, position: CGPoint(x: 600, y: 200)),
-            Vertex(id:  7, position: CGPoint(x: 300, y: 300)),
-            Vertex(id:  8, position: CGPoint(x: 400, y: 300)),
-            Vertex(id:  9, position: CGPoint(x: 500, y: 300)),
-            Vertex(id: 10, position: CGPoint(x: 100, y: 400)),
-            Vertex(id: 11, position: CGPoint(x: 200, y: 400)),
-            Vertex(id: 12, position: CGPoint(x: 300, y: 400)),
-            Vertex(id: 13, position: CGPoint(x: 500, y: 400)),
-            Vertex(id: 14, position: CGPoint(x: 600, y: 400)),
-            Vertex(id: 15, position: CGPoint(x: 700, y: 400)),
-            Vertex(id: 16, position: CGPoint(x: 300, y: 500)),
-            Vertex(id: 17, position: CGPoint(x: 400, y: 500)),
-            Vertex(id: 18, position: CGPoint(x: 500, y: 500)),
-            Vertex(id: 19, position: CGPoint(x: 200, y: 600)),
-            Vertex(id: 20, position: CGPoint(x: 400, y: 600)),
-            Vertex(id: 21, position: CGPoint(x: 600, y: 600)),
-            Vertex(id: 22, position: CGPoint(x: 100, y: 700)),
-            Vertex(id: 23, position: CGPoint(x: 400, y: 700)),
-            Vertex(id: 24, position: CGPoint(x: 700, y: 700))
+            Vertex(id:  1, positionX: 1, positionY: 1),
+            Vertex(id:  2, positionX: 4, positionY: 1),
+            Vertex(id:  3, positionX: 7, positionY: 1),
+            Vertex(id:  4, positionX: 2, positionY: 2),
+            Vertex(id:  5, positionX: 4, positionY: 2),
+            Vertex(id:  6, positionX: 6, positionY: 2),
+            Vertex(id:  7, positionX: 3, positionY: 3),
+            Vertex(id:  8, positionX: 4, positionY: 3),
+            Vertex(id:  9, positionX: 5, positionY: 3),
+            Vertex(id: 10, positionX: 1, positionY: 4),
+            Vertex(id: 11, positionX: 2, positionY: 4),
+            Vertex(id: 12, positionX: 3, positionY: 4),
+            Vertex(id: 13, positionX: 5, positionY: 4),
+            Vertex(id: 14, positionX: 6, positionY: 4),
+            Vertex(id: 15, positionX: 7, positionY: 4),
+            Vertex(id: 16, positionX: 3, positionY: 5),
+            Vertex(id: 17, positionX: 4, positionY: 5),
+            Vertex(id: 18, positionX: 5, positionY: 5),
+            Vertex(id: 19, positionX: 2, positionY: 6),
+            Vertex(id: 20, positionX: 4, positionY: 6),
+            Vertex(id: 21, positionX: 6, positionY: 6),
+            Vertex(id: 22, positionX: 1, positionY: 7),
+            Vertex(id: 23, positionX: 4, positionY: 7),
+            Vertex(id: 24, positionX: 7, positionY: 7)
         ]
     }
     
