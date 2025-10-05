@@ -27,8 +27,8 @@ struct GameView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(
-                                width: 800,
-                                height: 800
+                                width: 400,
+                                height: 400
                             )
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                     
@@ -54,7 +54,7 @@ struct GameView: View {
                             Point(point: point, location: location, action: {viewModel.playerAction(at: point.id)})
                         }
                     }
-                    .frame(width: 800, height: 800)
+                    .frame(width: 400, height: 400)
                     .shadow(radius: 0.5)
                 }
             }

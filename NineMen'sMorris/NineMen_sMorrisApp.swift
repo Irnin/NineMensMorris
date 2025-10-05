@@ -13,5 +13,16 @@ struct NineMen_sMorrisApp: App {
         WindowGroup {
             GameView()
         }
+        .commandsRemoved()
+        .commands {
+            CommandMenu("Game") {
+                Button("Play 9 men's morris") {
+                    NotificationCenter.default.post(name: Notification.Name.start9mens, object: nil)
+                }
+                Button("Play 3 men's morris") {
+                    NotificationCenter.default.post(name: Notification.Name.start3mens, object: nil)
+                }
+            }
+        }
     }
 }

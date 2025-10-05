@@ -87,7 +87,6 @@ class BoardGraph {
     }
     
     func getPointNeibers(for point: Vertex, orientation: Orientation) -> Set<Vertex>{
-        
         var neibers: Set<Vertex> = []
         
         var edgesFromPoint = edges.filter({$0.vertex1 == point || $0.vertex2 == point})

@@ -7,6 +7,16 @@ extension GameView {
     class ViewModel {
         private var game: GameModel = GameModel()
         
+        init() {
+            NotificationCenter.default.addObserver(forName: Notification.Name.start9mens, object: nil, queue: .main) { message in
+                print("Starting 9 men's morris")
+            }
+            
+            NotificationCenter.default.addObserver(forName: Notification.Name.start3mens, object: nil, queue: .main) { message in
+                print("Starting 3 men's morris")
+            }
+        }
+        
         private let logger = Logger(subsystem: "space.irnin.NineMen'sMorris", category: "game")
         
         func playerAction(at pointId: Int8) {
@@ -144,8 +154,6 @@ extension GameView {
         }
         
         func getPointLocation(point: Vertex, borderSize: CGSize) -> CGPoint {
-            
-            
             let pointX = CGFloat(point.positionX)
             let pointY = CGFloat(point.positionY)
             
