@@ -1,15 +1,20 @@
 import SwiftUI
 
 struct GameView: View {
-    @State private var viewModel = ViewModel()
+    @State private var viewModel: ViewModel
+    
+    init(variant: GameVariant) {
+        self._viewModel = State(initialValue: ViewModel(forVariant: variant))
+    }
     
     var body: some View {
         
         HStack{
             VStack {
                 Text("Nine men's morris")
-                Text("Game phase \(viewModel.gamePhase())")
+                    .font(.custom("Viking", size: 12.0))
                 
+                Text("Game phase \(viewModel.gamePhase())")
                 Text("Current player: \(viewModel.currentPlayer())")
                 Text("Player I men: \(viewModel.menLeft(player: .player1))")
                 Text("Player II men: \(viewModel.menLeft(player: .player2))")
@@ -25,17 +30,18 @@ struct GameView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(
-                                width: 800,
-                                height: 800
+                                width: 400,
+                                height: 400
                             )
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                     
                     GeometryReader { geometry in
+                        let borderSize = geometry.size
                         
                         // Place grid
                         ForEach(viewModel.getEdges(), id: \.id) { edge in
-                            let start = edge.vertex1.position
-                            let end = edge.vertex2.position
+                            let start = viewModel.getPointLocation(point: edge.vertex1, borderSize: borderSize)
+                            let end = viewModel.getPointLocation(point: edge.vertex2, borderSize: borderSize)
                             
                             Path { path in
                                 path.move(to: start)
@@ -46,17 +52,15 @@ struct GameView: View {
                         
                         // Place points on board
                         ForEach(viewModel.getPoints(), id: \.id) { point in
-                            Point(point: point, action: {viewModel.playerAction(at: point.id)})
+                            let location = viewModel.getPointLocation(point: point, borderSize: borderSize)
+                            
+                            Point(point: point, location: location, action: {viewModel.playerAction(at: point.id)})
                         }
                     }
-                    .frame(width: 800, height: 800)
+                    .frame(width: 400, height: 400)
                     .shadow(radius: 0.5)
                 }
             }
         }
     }
-}
-
-#Preview {
-    GameView()
 }

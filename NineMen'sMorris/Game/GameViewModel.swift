@@ -5,9 +5,13 @@ extension GameView {
     
     @Observable
     class ViewModel {
-        private var game: GameModel = GameModel()
-        
+        private var game: GameModel
         private let logger = Logger(subsystem: "space.irnin.NineMen'sMorris", category: "game")
+        
+        init(forVariant: GameVariant = .NineMensMorris) {
+            
+            game = GameModel(forVariant: forVariant)
+        }
         
         func playerAction(at pointId: Int8) {
             
@@ -141,6 +145,20 @@ extension GameView {
         
         func getPoints() -> [Vertex] {
             return game.board.points
+        }
+        
+        func getPointLocation(point: Vertex, borderSize: CGSize) -> CGPoint {
+            let pointX = CGFloat(point.positionX)
+            let pointY = CGFloat(point.positionY)
+            
+            let vertexBorder = CGFloat(game.board.vertexBorder)
+            
+            let borderSize = borderSize.width
+            
+            let relativeX = pointX / vertexBorder * borderSize
+            let relativeY = pointY / vertexBorder * borderSize
+            
+            return CGPoint(x: relativeX, y: relativeY)
         }
         
         func getEdges() -> [Edge] {
