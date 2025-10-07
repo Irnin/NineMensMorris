@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct GameView: View {
-    @State private var viewModel = ViewModel()
+    @State private var viewModel: ViewModel
+    
+    init(variant: GameVariant) {
+        self._viewModel = State(initialValue: ViewModel(forVariant: variant))
+    }
     
     var body: some View {
         
@@ -11,7 +15,6 @@ struct GameView: View {
                     .font(.custom("Viking", size: 12.0))
                 
                 Text("Game phase \(viewModel.gamePhase())")
-                
                 Text("Current player: \(viewModel.currentPlayer())")
                 Text("Player I men: \(viewModel.menLeft(player: .player1))")
                 Text("Player II men: \(viewModel.menLeft(player: .player2))")
@@ -60,8 +63,4 @@ struct GameView: View {
             }
         }
     }
-}
-
-#Preview {
-    GameView()
 }

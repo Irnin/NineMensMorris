@@ -5,19 +5,13 @@ extension GameView {
     
     @Observable
     class ViewModel {
-        private var game: GameModel = GameModel()
-        
-        init() {
-            NotificationCenter.default.addObserver(forName: Notification.Name.start9mens, object: nil, queue: .main) { message in
-                print("Starting 9 men's morris")
-            }
-            
-            NotificationCenter.default.addObserver(forName: Notification.Name.start3mens, object: nil, queue: .main) { message in
-                print("Starting 3 men's morris")
-            }
-        }
-        
+        private var game: GameModel
         private let logger = Logger(subsystem: "space.irnin.NineMen'sMorris", category: "game")
+        
+        init(forVariant: GameVariant = .NineMensMorris) {
+            
+            game = GameModel(forVariant: forVariant)
+        }
         
         func playerAction(at pointId: Int8) {
             

@@ -2,19 +2,32 @@ import Foundation
 import os.log
 
 struct GameModel {
-    private(set) var gamePhase: GamePhase = .placing
-    private(set) var attackActive: Bool = false
-    private(set) var board: BoardGraph = BoardGraph()
-    private(set) var currentPlayer: Player = .player1
-    private(set) var selectedPoint: Vertex? = nil
+    private(set) var gamePhase: GamePhase
+    private(set) var variant: GameVariant
+    private(set) var attackActive: Bool
+    private(set) var board: BoardGraph
+    private(set) var currentPlayer: Player
+    private(set) var selectedPoint: Vertex?
     
-    private(set) var menLeft : [Player: Int8] = [.player1: 9, .player2: 9]
-    private(set) var menOnBoard : [Player: Int8] = [.player1: 0, .player2: 0]
+    private(set) var menLeft : [Player: Int8] = [:]
+    private(set) var menOnBoard : [Player: Int8] = [:]
     
     private let logger = Logger(subsystem: "space.irnin.NineMen'sMorris", category: "game")
     
-    mutating func prepareGame() {
-        self.gamePhase = .placing
+    init(forVariant variant: GameVariant = .NineMensMorris) {
+        
+        self.variant = variant
+        gamePhase = .placing
+        attackActive = false
+        currentPlayer = .player1
+        selectedPoint = nil
+        
+        board = BoardGraph(variant.rawValue)
+        
+        menLeft[.player1] = variant.rawValue
+        menLeft[.player2] = variant.rawValue
+        menOnBoard[.player1] = 0
+        menOnBoard[.player2] = 0
     }
     
     func getPoint(at pointId: Int8) -> Vertex? {
@@ -45,8 +58,10 @@ struct GameModel {
     func isMill(at pointId: Int8) -> Bool {
         let horizontalCheck = isMill(at: pointId, orintation: .horizontal)
         let verticalCheck = isMill(at: pointId, orintation: .vertical)
+        let diagonalLeftToRightCheck = isMill(at: pointId, orintation: .diagonalLeftToRight)
+        let diagonalRightToLeftCheck = isMill(at: pointId, orintation: .diagonalRightToLeft)
         
-        return horizontalCheck || verticalCheck
+        return horizontalCheck || verticalCheck || diagonalLeftToRightCheck || diagonalRightToLeftCheck
     }
     
     func isMill(at pointId: Int8, orintation: Orientation) -> Bool {

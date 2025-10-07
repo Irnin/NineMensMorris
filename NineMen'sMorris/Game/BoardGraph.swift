@@ -40,7 +40,7 @@ class Vertex: Identifiable, Hashable {
     }
 }
 
-class Edge: Identifiable {
+class  Edge: Identifiable {
     let id: Int8
     let vertex1: Vertex
     let vertex2: Vertex
@@ -60,10 +60,10 @@ class Edge: Identifiable {
         }
         
         if (deltaX < 0 && deltaY < 0) || (deltaX > 0 && deltaY > 0) {
-            return .diagonalLeftToRight
+            return .diagonalRightToLeft
         }
         else {
-            return .diagonalRightToLeft
+            return .diagonalLeftToRight
         }
     }
     
@@ -76,11 +76,12 @@ class Edge: Identifiable {
     }
 }
 
+@Observable
 class BoardGraph {
     private(set) var points: [Vertex] = []
     private(set) var edges: [Edge] = []
     
-    private(set) var vertexBorder: Int8
+    private(set) var vertexBorder: Int8 = 0
 
     func getPoint(id: Int8) -> Vertex? {
         return points.first {$0.id == id}
@@ -100,6 +101,11 @@ class BoardGraph {
                 .filter({$0.orientation == orientation})
         }
         
+        // neibers can not exist in case vertex has no nerber in selected orientation
+        if edgesFromPoint.count == 0 {
+            return neibers
+        }
+        
         neibers.insert(edgesFromPoint[0].vertex1)
         neibers.insert(edgesFromPoint[0].vertex2)
         neibers.insert(edgesFromPoint[1].vertex1)
@@ -108,29 +114,29 @@ class BoardGraph {
         return neibers
     }
     
-    func getPointNeibers(for point: Vertex) -> Set<Vertex>{
-        let verticalNeibers = getPointNeibers(for: point, orientation: .vertical)
-        let horizontalNeibers = getPointNeibers(for: point, orientation: .horizontal)
-        
-        let neibers = verticalNeibers.union(horizontalNeibers)
-        
-        return neibers
-    }
-    
     func getPointCloseNeighbors(for point: Vertex) -> Set<Vertex> {
-        return Set(edges.filter { $0.vertex1 == point || $0.vertex2 == point }
-                       .flatMap { [$0.vertex1, $0.vertex2] })
-            .subtracting([point])
+        let result = Set(edges.filter { $0.vertex1 == point || $0.vertex2 == point }
+                        .flatMap { [$0.vertex1, $0.vertex2] })
+                        .subtracting([point])
+        
+        return result
     }
     
-    init() {
+    init(_ i: Int8 = 9) {
+        
+        switch(i) {
+        case 9:
+            create9mensBoard()
+        case 3:
+            create3mensBoard()
+        default:
+            fatalError("Not implemented")
+        }
+    }
+    
+    private func create9mensBoard() {
         self.vertexBorder = 8
         
-        createVertice()
-        createEdge()
-    }
-    
-    private func createVertice() {
         points = [
             Vertex(id:  1, positionX: 1, positionY: 1),
             Vertex(id:  2, positionX: 4, positionY: 1),
@@ -157,9 +163,7 @@ class BoardGraph {
             Vertex(id: 23, positionX: 4, positionY: 7),
             Vertex(id: 24, positionX: 7, positionY: 7)
         ]
-    }
-    
-    private func createEdge() {
+        
         edges = [
             Edge( 1, getPoint(id:  1)!, getPoint(id:  2)!),
             Edge( 2, getPoint(id:  2)!, getPoint(id:  3)!),
@@ -194,6 +198,43 @@ class BoardGraph {
             Edge(30, getPoint(id: 14)!, getPoint(id: 21)!),
             Edge(31, getPoint(id:  3)!, getPoint(id: 15)!),
             Edge(32, getPoint(id: 15)!, getPoint(id: 24)!)
+        ]
+    }
+    
+    private func create3mensBoard() {
+        self.vertexBorder = 4
+        
+        points = [
+            Vertex(id:  1, positionX: 1, positionY: 1),
+            Vertex(id:  2, positionX: 2, positionY: 1),
+            Vertex(id:  3, positionX: 3, positionY: 1),
+            Vertex(id:  4, positionX: 1, positionY: 2),
+            Vertex(id:  5, positionX: 2, positionY: 2),
+            Vertex(id:  6, positionX: 3, positionY: 2),
+            Vertex(id:  7, positionX: 1, positionY: 3),
+            Vertex(id:  8, positionX: 2, positionY: 3),
+            Vertex(id:  9, positionX: 3, positionY: 3),
+        ]
+        
+        edges = [
+            Edge( 1, getPoint(id:  1)!, getPoint(id:  2)!),
+            Edge( 2, getPoint(id:  2)!, getPoint(id:  3)!),
+            Edge( 3, getPoint(id:  4)!, getPoint(id:  5)!),
+            Edge( 4, getPoint(id:  5)!, getPoint(id:  6)!),
+            Edge( 5, getPoint(id:  7)!, getPoint(id:  8)!),
+            Edge( 6, getPoint(id:  8)!, getPoint(id:  9)!),
+            
+            Edge( 7, getPoint(id: 1)!, getPoint(id: 4)!),
+            Edge( 8, getPoint(id: 4)!, getPoint(id: 7)!),
+            Edge( 9, getPoint(id: 2)!, getPoint(id: 5)!),
+            Edge(10, getPoint(id: 5)!, getPoint(id: 8)!),
+            Edge(11, getPoint(id: 3)!, getPoint(id: 6)!),
+            Edge(12, getPoint(id: 6)!, getPoint(id: 9)!),
+            
+            Edge(13, getPoint(id: 1)!, getPoint(id: 5)!),
+            Edge(14, getPoint(id: 5)!, getPoint(id: 9)!),
+            Edge(15, getPoint(id: 7)!, getPoint(id: 5)!),
+            Edge(16, getPoint(id: 5)!, getPoint(id: 3)!),
         ]
     }
 }
